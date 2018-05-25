@@ -1,29 +1,96 @@
+var templates = [{
+    name: "Basica",
+    value: "Good work, # !!!"
+}, {
+    name: "Goodbye",
+    value: "Suerte en tus nuevos proyectos, # !!"
+}, ]
 document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem("plantilla")) {
-        localStorage.setItem("plantilla", document.getElementById("plantilla").value);
+    if (!localStorage.getItem("plantillas")) {
+        localStorage.setItem("plantillas", JSON.stringify(templates));
     } else {
-        document.getElementById("plantilla").value = localStorage.getItem("plantilla");
+        var temp = localStorage.getItem("plantillas")
+        templates = JSON.parse(temp);
     }
-    console.log("listo");
-    $("#bot").on("click", function() {
-        console.log("pincho");
+    populateSelect(templates);
+    document.getElementById("plantilla").value = templates[0].value;
+
+    $("#plantilla").keypress(function() {
+        $("body").addClass("edit");
+        $(".edit #save").on("click", function() {
+            templates[$("#select").prop('selectedIndex')].value = document.getElementById("plantilla").value;
+            localStorage.setItem("plantillas", JSON.stringify(templates));
+            $("body").removeClass()
+        });
+    })
+
+   $("#select").change(function() {
+        if ($("#select").prop('selectedIndex') == ($('#select > option').length - 1)) {
+            document.getElementById("plantilla").value = "";
+            $("body").addClass("new");
+            $(".new #save").on("click", function() {
+                templates.push({
+                    name: document.getElementById("name").value,
+                    value: document.getElementById("plantilla").value
+                });
+                setTimeout(function() { populateSelect(templates)}, 10);
+                setTimeout(function() { document.getElementById("select").options.selectedIndex = $('#select > option').length - 2 }, 14);
+                $("body").removeClass()
+            });
+            return
+        };
+        $("body").removeClass();
+        document.getElementById("plantilla").value = templates[$("#select").prop('selectedIndex')].value;
+    })
+ $("#close").on("click", function() {
+     window.close();
+ })
+
+    $("#remove").on("click", function() {
+        templates.splice($("#select").prop('selectedIndex'), 1);
+        setTimeout(function() {
+            populateSelect(templates)
+        }, 10);
+        $("body").addClass("remove");
+        $(".remove #save").on("click", function() {
+            localStorage.setItem("plantillas", JSON.stringify(templates));
+            $("body").removeClass();
+        });
+    })
+
+$("#bot").on("click", function() {
         var plantilla = document.getElementById("plantilla").value;
         chrome.tabs.query({
             active: true,
             currentWindow: true
         }, function(tabs) {
-             console.log("pincho2");
             chrome.tabs.sendMessage(tabs[0].id, {
                 "texto": plantilla
             }, function(response) {
-                console.log(response);
-                window.close();
+             window.close();
             });
         });
-
     });
-             $("#save").on("click", function() {
-            console.log("guardo");
-            localStorage.setItem("plantilla", document.getElementById("plantilla").value);
-        });
 });
+
+
+function populateSelect(optionsData) {
+    var arr = [];
+    for (var i in optionsData) {
+        arr.push(optionsData[i].name);
+    }
+    arr.push("Nueva");
+    select = document.getElementById('select');
+    var add = "";
+    var options = select.options,
+        o, selected;
+    options.length = 0;
+    for (var i = 0, len = arr.length; i < len; ++i) {
+        add = ""
+        o = arr[i];
+        selected = !!o.selected;
+        options[i] = new Option(o + add, o, selected, selected);
+    }
+    document.getElementById("plantilla").value = templates[0].value;
+}
+

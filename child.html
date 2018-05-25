@@ -6,11 +6,19 @@
         body {
             width: 250px;
             height: 150px;
+            text-align:center;
+            position: relative;
+        } 
+        #name{
+            display:none;
+            width: 100%;
         }
-        
+        .new #name{
+            display:block;
+        }
         textarea {
             width: 100%;
-            margin: auto;
+            margin: 5px auto;
         }
         
         #boton, button {
@@ -20,9 +28,51 @@
             color: #FFF;
             padding: 6px;
             margin: 0 auto 10px;
-            display: block;
+            display: inline-block;
             font-weight: bold;
-            WIDTH: 90%;
+            width:  48%;
+        }
+        #save{
+            opacity:0.4;
+            pointer-events:none;
+        }
+        #remove{
+            width:auto;
+        }
+        select{
+         /*   vertical-align: super;*/
+        }
+        .new #save, .edit #save, .remove #save{
+            opacity:1;
+            pointer-events:all;
+        }
+        .edit #save:after{
+            content:" EDIT";
+        }
+        .new #save:after{
+            content:" NEW";
+        }
+        .remove #save:after{
+            content:" DELETE";
+        }
+
+         .edit.new #save:after, .edit.remove #save:after, .new.remove #save:after{
+             content:" CHANGES";
+         }
+
+        .close{
+            display:inline-block;
+
+            background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABkUlEQVRIS72VSUoEMRiFuxfqAdSNIwguxY2ewBM4IDicwekgjkdQUXA6gSfQjbhVFEU36gXc6PuapPn5qap0VdMdeFQlf/Je8v4M9VqHS73D/LWUQK8msCTMC7PCUJjQp753wo1wKfzmTbRIAOI9YSSxynfFt4WrrH5ZArRBvFnSvoMg9GfHZQnsVyCPnIxlNc3iBbDlouTMffdFNVzHRitAQp+d51+qbwiHwqBjirEjtQ+Y2Jv+J4VG4q3AquqnjmRF9XNhSrg1IpDPCY/CmnDixsF15gWwBotssURRhHgknw7C/W4cXMte4FUN464jVS9CGzPPIyf+Ikx4ATzryRDwItSLyInD1dd1gVYsYuaUhyoWpZIcbUGAJBeJZCa5aJt6z3+MyLr+j13uMrcpB+1JGDWdv/W/JXDP+K2ICDGuBxvLPWjwcsy5ftspCxrMNd4oXb/souhuWH6ZlWDVjpC8riMpS+VdGEuo4Dm5aNpi+7fyZJIXnswZYTgM/tD3PpDyklV6MsvYk9s3tYK2Rf4BB7peGfpJcXwAAAAASUVORK5CYII=);
+            background-size:20px auto;
+            width:20px;
+            height:20px;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+        .new .remove{
+            display:none;
         }
     </style>
     <script type="text/javascript" src="jquery-3.js"></script>
@@ -31,11 +81,15 @@
 </head>
 
 <body>
-    <button id="bot"> RELLENA </button>
+    <select id="select">
+  <option value="volvo">Error de carga</option>
+
+</select>  <button id="remove"> BORRA </button>  <div class="close"></div>
+   <input type="text" name="fname" id="name" placeholder="Nombre plantilla">
     <textarea rows="4" cols="40" id="plantilla">
 Good work, # !!!
 </textarea>
-    <button id="save"> SAVE </button>
+   <button id="bot"> RELLENA </button>   <button id="save"> SAVE </button>
 </body>
 
 </html>
