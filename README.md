@@ -8,7 +8,7 @@ Contestara al mail reemplazando los "#" que tengamos en la plantilla por el text
 
 Se pueden editar y crear nuevas plantillas. 
 
-Para instarla abrid esta dirección:
+Para instalarla abrid esta dirección:
 
  chrome://extensions
  Seleccionad  "modo de desarrollador"  y arrastrad esta carpeta
