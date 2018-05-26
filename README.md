@@ -1,15 +1,16 @@
 # extension
 
-Para probar el desarrollo de extensiones para chrome he hecho una pequeña app para hacer plantillas rápidas y responder en gmail.
+Extensión para hacer plantillas rápidas y responder en gmail.
 
-Para ello, seleccionamos un texto y pulsamos en la extension y "Rellena". 
-Contestara al mail reemplazando los "#" que tengamos en la plantilla por el texto seleccionado.
+Para ello, escribimos un texto en un mensaje de gmail un texto y pulsamos en la extensión y "Fill". 
+Contestara al mail reemplazando los "#" que tengamos en la plantilla por el texto escrito en el cuerpo del mensaje.
 
-He preferido que la extension conteste y envie el mensaje directamente para que sea más "fast", es conveniente  activar el undo de gmail (en settings) por si las moscas.
-Se puede cambiar la plantilla editando el campo de texto y pulsando "Save". 
+
+Se pueden editar y crear nuevas plantillas. 
 
 Para instarla abrid esta dirección:
 
  chrome://extensions
+ Seleccionad  "modo de desarrollador"  y arrastrad esta carpeta
 
- y arrastrad esta carpeta
+Esta pendiente incorporar validación de plantillas, guardado automatico, habilitar para cualquier formulario (no solo gmail) etc

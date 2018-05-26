@@ -35,7 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 setTimeout(function() { populateSelect(templates)}, 10);
                 setTimeout(function() { document.getElementById("select").options.selectedIndex = $('#select > option').length - 2 }, 14);
-                $("body").removeClass()
+                $("body").removeClass();
+                setTimeout(function() {
+                   document.getElementById("plantilla").value = templates[$("#select").prop('selectedIndex')].value;
+                   }, 15);
             });
             return
         };
@@ -58,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     })
 
-$("#bot").on("click", function() {
+$("#fill").on("click", function() {
         var plantilla = document.getElementById("plantilla").value;
         chrome.tabs.query({
             active: true,

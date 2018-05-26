@@ -1,95 +1,112 @@
 <html>
-
-<head>
-    <title>Plantilla</title>
-    <style>
-        body {
-            width: 250px;
-            height: 150px;
-            text-align:center;
-            position: relative;
-        } 
-        #name{
-            display:none;
-            width: 100%;
-        }
-        .new #name{
-            display:block;
-        }
-        textarea {
-            width: 100%;
-            margin: 5px auto;
-        }
-        
-        #boton, button {
-            background: green;
-            text-align: center;
-            border-radius: 5px;
-            color: #FFF;
-            padding: 6px;
-            margin: 0 auto 10px;
-            display: inline-block;
-            font-weight: bold;
-            width:  48%;
-        }
-        #save{
-            opacity:0.4;
-            pointer-events:none;
-        }
-        #remove{
-            width:auto;
-        }
-        select{
-         /*   vertical-align: super;*/
-        }
-        .new #save, .edit #save, .remove #save{
-            opacity:1;
-            pointer-events:all;
-        }
-        .edit #save:after{
-            content:" EDIT";
-        }
-        .new #save:after{
-            content:" NEW";
-        }
-        .remove #save:after{
-            content:" DELETE";
-        }
-
-         .edit.new #save:after, .edit.remove #save:after, .new.remove #save:after{
-             content:" CHANGES";
+   <head>
+      <title>Plantilla</title>
+      <style>
+         body {
+         width: 250px;
+         background:#fdfdfd;
+         text-align:center;
+         position: relative;
+         } 
+         header{
+         display:flex;
+         align-items: center;
          }
-
-        .close{
-            display:inline-block;
-
-            background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABkUlEQVRIS72VSUoEMRiFuxfqAdSNIwguxY2ewBM4IDicwekgjkdQUXA6gSfQjbhVFEU36gXc6PuapPn5qap0VdMdeFQlf/Je8v4M9VqHS73D/LWUQK8msCTMC7PCUJjQp753wo1wKfzmTbRIAOI9YSSxynfFt4WrrH5ZArRBvFnSvoMg9GfHZQnsVyCPnIxlNc3iBbDlouTMffdFNVzHRitAQp+d51+qbwiHwqBjirEjtQ+Y2Jv+J4VG4q3AquqnjmRF9XNhSrg1IpDPCY/CmnDixsF15gWwBotssURRhHgknw7C/W4cXMte4FUN464jVS9CGzPPIyf+Ikx4ATzryRDwItSLyInD1dd1gVYsYuaUhyoWpZIcbUGAJBeJZCa5aJt6z3+MyLr+j13uMrcpB+1JGDWdv/W/JXDP+K2ICDGuBxvLPWjwcsy5ftspCxrMNd4oXb/souhuWH6ZlWDVjpC8riMpS+VdGEuo4Dm5aNpi+7fyZJIXnswZYTgM/tD3PpDyklV6MsvYk9s3tYK2Rf4BB7peGfpJcXwAAAAASUVORK5CYII=);
-            background-size:20px auto;
-            width:20px;
-            height:20px;
-            position:absolute;
-            right:0;
-            top:0;
-        }
-        .new .remove{
-            display:none;
-        }
-    </style>
-    <script type="text/javascript" src="jquery-3.js"></script>
-    <script type="text/javascript" src="popup.js"></script>
-
-</head>
-
-<body>
-    <select id="select">
-  <option value="volvo">Error de carga</option>
-
-</select>  <button id="remove"> BORRA </button>  <div class="close"></div>
-   <input type="text" name="fname" id="name" placeholder="Nombre plantilla">
-    <textarea rows="4" cols="40" id="plantilla">
+         #name{
+         display:none;
+         width: 100%;
+         }
+         .new #name{
+         display:block;
+         }
+         textarea,input {
+         width: 100%;
+         padding: 7px;
+         margin: 5px auto;
+         background: #fdfdfd;
+         border: none;
+         box-shadow: 0 0 30px #ddd inset;
+         }
+         select {
+         -moz-appearance: none;
+         -webkit-appearance: none;
+         appearance: none;
+         padding: 6px;
+         border: none;
+         border-bottom: 1px solid #ddd;
+         border-radius: 0;
+         background: #fff;
+         width: 59%;
+         background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0LjgzIDE2LjQybDkuMTcgOS4xNyA5LjE3LTkuMTcgMi44MyAyLjgzLTEyIDEyLTEyLTEyeiIvPjxwYXRoIGQ9Ik0wLS43NWg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PC9zdmc+);
+         background-repeat: no-repeat;
+         background-size: auto 20px;
+         background-position: right center;
+         margin-right:10px;
+         }
+         #fill{
+         width:36%;
+         }
+         #boton, button{
+         background: #7cd07c;
+         border: none;
+         text-align: center;
+         border-radius: 5px;
+         color: #FFF;
+         padding: 6px;
+         display: inline-block;
+         font-weight: bold;
+         width:  48%;
+         }
+         #save{
+         opacity:0.4;
+         pointer-events:none;
+         }
+         #remove{
+         width:12px;
+         height:12px;
+         background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADEElEQVQ4T21TWWsTYRQ938ykmSWKfbFILUGKEWpsG1yKiVLTxa3S4oMI1uVBKChNwV/is0gt7opIpY1LTUjVthpR6EajtdimCr7YPTUzSWbxTrShoPMy831z7znnnnsvw9/nHrDfAq6bwKVzwMDa/fr3XWA3A27qQMd5IGb/ozNAybWWIDzz1NXJX2KxNHT9WCvwZn3yLaCGZyy6rbraNTs5qebS6RM2CLsNNAqS9GRfW5vsKi1Fanoa7zs70yyXO34GeG2D3AECjOP6qhoblY0lJUgtLmI8GtWyqtrEiH18Z2urd4vPh8zEBIq2bsXqz5+I37iRRjZ7giSatrq9LS2yIopQR0bgqKrCt+FhfP/0aYLdB3xMFAdqQiFFpgAjmYSjrAy/FhbwtqtLZZaFmtOnJVkQoI2NwVFejoW5OYz196uGZQXzHlAZfioj4g+FZNnhgDEzkwdRV1cBAhANA9lEApzbjZXlZXwIhzVKbsp7sGYU1VnPS1LvwVBIkojNJC8E8sTSNOhTU+A2b0aKvuPd3RnLME6RP72FLqyBkJJmh6I8CLa3S07GYE5OwvrxA1ZxMbKKgjc9PRkjl7tIHaKO/nkKCuwD3bbwovgg2NEhFqkq9GgUPJUAkp5zufAqHFazmcwVmpNr/wAQ+1FHUVF34PJlUUpTAyIROL1e2CbmqH7m8UDlebzr61MNXb9AKh4VFBBzkPH8U9+hQ9IG04RB0kVqlZ3AqBTJNnF8HHxFBVK6jo/9/Zppmi1ngZf2IPk5jotUHTgguyhYJzapuhorBD8ci2lUI9vT0OBUSEmG2ihUVmKFFI4MDaUty6pnxJ50ezzu0h07oA0OQqbkFKkYHRhQieU4B8ik7rGvtla0CTRS4gwEMEtg379+TdgKmknBw0q/X9xAbi/Nz2MiHreTj6wtFZE0EEjvrkBA3LhpE1JLSxgdHNQs07QnNT9IzbwgPCzbvl389vmzLe0w1Te0fpnyC8dxz7d5vVIykdDIyJNE8KLQxrwS4Co1rZWS4/9bZ3vl6f4+rXw7xYTtmN+76VOV3sx2xwAAAABJRU5ErkJggg==);
+         background-size:100% 100%;
+         background-color:transparent;
+         border:none;
+         }
+         .new #remove{
+         visibility: hidden;
+         }
+         .new #save, .edit #save, .remove #save{
+         opacity:1;
+         pointer-events:all;
+         }
+         .edit #save:after{
+         content:" EDIT";
+         }
+         .new #save:after{
+         content:" NEW";
+         }
+         .remove #save:after{
+         content:" DELETE";
+         }
+         .edit.new #save:after, .edit.remove #save:after, .new.remove #save:after{
+         content:" CHANGES";
+         }
+         .new .remove{
+         display:none;
+         }
+      </style>
+      <script type="text/javascript" src="jquery-3.js"></script>
+      <script type="text/javascript" src="popup.js"></script>
+   </head>
+   <body>
+      <header>
+         <div id="remove"> </div>
+         <select id="select">
+            <option value="0">Error de carga</option>
+         </select>
+         <button id="fill"> FILL </button>  
+      </header>
+      <input type="text" name="fname" id="name" placeholder="Nombre plantilla">
+      <textarea rows="4" cols="40" id="plantilla">
 Good work, # !!!
 </textarea>
-   <button id="bot"> RELLENA </button>   <button id="save"> SAVE </button>
-</body>
-
+      <button id="save"> SAVE </button>
+   </body>
 </html>
