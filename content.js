@@ -11,4 +11,6 @@ function fill(plant){
              $("[aria-label='Message Body']").text("");
              var res = plant.replace(/#/g, selection);  
              $("[aria-label='Message Body']").text(res);
+             plant="";
+             res="";
 }
