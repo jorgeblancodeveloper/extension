@@ -1,9 +1,9 @@
 var templates = [{
-    name: "Basica",
+    name: "Goodwork",
     value: "Good work, # !!!"
 }, {
-    name: "Goodbye",
-    value: "Suerte en tus nuevos proyectos, # !!"
+    name: "Allright",
+    value: "Todo correcto, # !!"
 }, ]
 document.addEventListener('DOMContentLoaded', function() {
     if (!localStorage.getItem("plantillas")) {

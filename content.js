@@ -7,10 +7,15 @@ fill(request.texto);
 );
 
 function fill(plant){
-             var selection = $("[aria-label='Message Body']").text();
-             $("[aria-label='Message Body']").text("");
-             var res = plant.replace(/#/g, selection);  
-             $("[aria-label='Message Body']").text(res);
-             plant="";
-             res="";
+
+var mitext = window.getSelection()
+var res = plant.replace(/#/g, mitext);  
+var sel, range;
+       sel = window.getSelection();
+        if (sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(res));
+        }
 }
+
