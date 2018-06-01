@@ -14,7 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     populateSelect(templates);
     document.getElementById("plantilla").value = templates[0].value;
-
+if (localStorage.getItem("sel_index")) {
+      $("#select").prop('selectedIndex',Number(localStorage.getItem("sel_index")));
+        setTimeout(function() {
+                   document.getElementById("plantilla").value = templates[$("#select").prop('selectedIndex')].value;
+                   }, 15);
+    } 
     $("#plantilla").keypress(function() {
         $("body").addClass("edit");
         $(".edit #save").on("click", function() {
@@ -25,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
    $("#select").change(function() {
+    localStorage.setItem("sel_index", $("#select").prop('selectedIndex'));
         if ($("#select").prop('selectedIndex') == ($('#select > option').length - 1)) {
             document.getElementById("plantilla").value = "";
             $("body").addClass("new");
