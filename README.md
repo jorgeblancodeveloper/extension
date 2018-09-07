@@ -13,4 +13,4 @@ Para instarla abrid esta dirección:
  chrome://extensions
  Seleccionad  "modo de desarrollador"  y arrastrad esta carpeta
 
-Esta pendiente incorporar validación de plantillas, guardado automatico, habilitar para cualquier formulario (no solo gmail) etc
+Está pendiente incorporar validación de plantillas, guardado automatico, habilitar para cualquier formulario (no solo gmail) etc
